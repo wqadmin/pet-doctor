@@ -1,0 +1,137 @@
+{
+	"easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "医生小助手",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"backgroundColor": "#FFFFFF",
+				"backgroundColorTop": "#FFFFFF",
+				"h5": {
+					"titleNView": {
+						"backgroundColor": "#FFFFFF"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/tabs/tab1",
+			"style": {
+				"navigationBarTitleText":"首页",
+				"navigationBarBackgroundColor":"#00AEA5",
+				"backgroundColor": "#00AEA5",
+				"backgroundColorTop": "#00AEA5",
+				"backgroundColorBottom":"#FFFFFF",
+				"app-plus": {
+					"titleNView": false,
+					"popGesture": "none"
+				},
+				"h5": {
+					"titleNView": false,
+					"popGesture": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/tab1/myAppointment",
+			"style": {
+				"navigationBarTitleText": "挂号列表",
+				"navigationBarBackgroundColor": "#ffffff",
+				// "app-plus": {
+				// 	"pullToRefresh": {
+				// 		"support": true,
+				// 		"offset": "0",
+				// 		"style": "circle",
+				// 		"color": "#03A6A6",
+				// 		"contentdown": {
+				// 			"caption": "下拉可刷新"
+				// 		},
+				// 		"contentover": {
+				// 			"caption": "释放可刷新"
+				// 		},
+				// 		"contentrefresh": {
+				// 			"caption": "正在刷新"
+				// 		}
+				// 	}
+				// },
+				"h5": {
+					"pullToRefresh": {
+						"support": false,
+						"offset": "88px",
+						"style": "circle",
+						"color":"#00AEA5",
+						"contentdown": {
+							"caption": "下拉可刷新"
+						},
+						"contentover": {
+							"caption": "释放可刷新"
+						},
+						"contentrefresh": {
+							"caption": "正在刷新"
+						}
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/tab1/illnessBill",
+			"style": {
+				"navigationBarTitleText": "病例账单",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/tab1/illnessBillDetail",
+			"style": {
+				"navigationBarTitleText": "病例明细",
+				"navigationBarBackgroundColor": "#ffffff",
+				"backgroundColor":"#FFFFFF",
+				"backgroundColorTop": "#FFFFFF",
+				"backgroundColorBottom":"#FFFFFF"
+			}
+		},
+		{
+			"path": "pages/tab1/testReport",
+			"style": {
+				"navigationBarTitleText": "检测报告",
+				"navigationBarBackgroundColor": "#ffffff",
+				"backgroundColor":"#FFFFFF",
+				"backgroundColorTop": "#FFFFFF",
+				"backgroundColorBottom":"#FFFFFF"
+			}
+		},
+		{
+			"path": "pages/tab1/feeBill",
+			"style": {
+				"navigationBarTitleText": "排班打卡",
+				"navigationBarBackgroundColor": "#ffffff",
+				"backgroundColor":"#FFFFFF",
+				"backgroundColorTop": "#FFFFFF",
+				"backgroundColorBottom":"#FFFFFF"
+			}
+		},
+		{
+			"path": "pages/tab1/feeBillDetail",
+			"style": {
+				"navigationBarTitleText": "账单详情",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/tab1/appointment",
+			"style": {
+				"navigationBarTitleText": "在线预约",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
