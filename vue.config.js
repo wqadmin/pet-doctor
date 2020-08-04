@@ -7,7 +7,7 @@ const vueConfig = {
 		}
 	},
 	devServer: {
-		port: 8000,
+		port: 8080,
 		proxy: {
 			'/': { //这里的key就是axios的baseURL
 				target: host,
