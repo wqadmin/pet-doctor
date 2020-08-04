@@ -106,6 +106,7 @@
 						id: 3
 					}).then(res => {
 						console.log(res)
+						this.$u.vuex('vuex_token', "token")
 						this.$refs.uToast.show({
 							title: '登录成功',
 							type: 'success',
