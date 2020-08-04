@@ -6,6 +6,7 @@
 				<view>
 					<u-subsection class="c_subsection" style="background-color: #FFFFFF;" bgColor="#ffffff" active-color="#00AEA5"
 					 :list="list" :current="current" @change="change"></u-subsection>
+					<!-- <u-tabs :list="list" :is-scroll="false" :current="current" @change="change"></u-tabs> -->
 				</view>
 				<!-- <view class="">
 					<u-gap style="width: 33.33333333%;transition: all 0.35s ease 0s;" :style="[tabBarStyle]" height="4" bg-color="#00AEA5"></u-gap>
@@ -40,7 +41,8 @@
 										<text>2020-03-24 15:00</text>
 									</u-col>
 									<u-col span="6" style="text-align: right;">
-										<u-button style="background-color: #3C69FC;width: 116rpx;height: 60rpx;color: #FFFFFF;margin-right: 0;" ripple>接诊</u-button>
+										<u-button style="background-color: #3C69FC;width: 116rpx;height: 60rpx;color: #FFFFFF;margin-right: 0;"
+										 ripple>接诊</u-button>
 									</u-col>
 								</u-row>
 							</view>
@@ -250,8 +252,7 @@
 				uni.stopPullDownRefresh();
 			}, 1000);
 		},
-		computed: {
-		},
+		computed: {},
 		methods: {
 			reachBottom() {
 				// 此tab为空数据
@@ -279,16 +280,23 @@
 				this.current = index
 				if (index == 1 || index == 0) {
 					this.getOrderList(index)
-				} else{
-					
+				} else {
+
 				}
-				
+			},
+			transition({
+				detail: {
+					dx
+				}
+			}) {
+				this.$refs.tabs.setDx(dx);
 			},
 			animationfinish({
 				detail: {
 					current
 				}
 			}) {
+				// this.$refs.tabs.setFinishCurrent(current);
 				this.swiperCurrent = current;
 				this.current = current;
 			}
@@ -302,42 +310,45 @@
 		height: 100%;
 		background: rgba(249, 249, 249, 1);
 	}
+
 	/* #endif */
 </style>
 
 <style lang="scss" scoped>
-		.list_item {
+	.list_item {
+		width: 100%;
+		padding: 20rpx 30rpx;
+		background: rgba(255, 255, 255, 1);
+		margin: 10rpx 0;
+
+		.list_item_title {
 			width: 100%;
-			padding: 20rpx 30rpx;
-			background: rgba(255, 255, 255, 1);
-			margin: 10rpx 0;
-	
-			.list_item_title {
-				width: 100%;
-				font-size: 24rpx;
-				font-weight: 400;
-				color: rgba(112, 121, 136, 1);
-				text {
-					font-size: 30rpx;
-					font-weight: 500;
-					color: rgba(50, 50, 50, 1);
-					letter-spacing: 1rpx;
-				}
-			}
-	
-			.list_item_label {
+			font-size: 24rpx;
+			font-weight: 400;
+			color: rgba(112, 121, 136, 1);
+
+			text {
 				font-size: 30rpx;
 				font-weight: 500;
 				color: rgba(50, 50, 50, 1);
 				letter-spacing: 1rpx;
 			}
-	
-			.list_item_right {
-				font-size: 28rpx;
-				font-weight: 500;
-				color: rgba(0, 174, 165, 1);
-			}
 		}
+
+		.list_item_label {
+			font-size: 30rpx;
+			font-weight: 500;
+			color: rgba(50, 50, 50, 1);
+			letter-spacing: 1rpx;
+		}
+
+		.list_item_right {
+			font-size: 28rpx;
+			font-weight: 500;
+			color: rgba(0, 174, 165, 1);
+		}
+	}
+
 	.c_subsection {
 		.u-item-bg {
 			bottom: 0 !important;
