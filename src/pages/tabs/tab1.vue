@@ -119,7 +119,7 @@
 		.list_item {
 			width: 630rpx;
 			height: 120rpx;
-			background: rgba(255, 255, 255, 1);
+			// background: rgba(255, 255, 255, 1);
 			box-shadow: 0px 0px 30rpx 0px rgba(0, 0, 0, 0.08);
 			border-radius: 10rpx;
 			margin-bottom: 40rpx;

@@ -26,89 +26,76 @@
 			<swiper class="swiper-box" :current="swiperCurrent" @animationfinish="animationfinish">
 				<swiper-item class="swiper-item">
 					<scroll-view scroll-y style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
-						<view class="">
-							<view class="list_item" v-for="(res, index) in orderList[0]" :key="res.id">
-								<u-row gutter="0" class="list_item_title">
-									<u-col span="6">
-										<view>顾客信息</view>
-										<text>张三（豆豆）</text>
-									</u-col>
-									<u-col span="6" style="text-align: right;color: #00AEA5;font-size: 28rpx;">待接诊</u-col>
-								</u-row>
-								<u-row gutter="0" style="margin-top: 24rpx;" class="list_item_title">
-									<u-col span="6">
-										<view>挂号时间</view>
-										<text>2020-03-24 15:00</text>
-									</u-col>
-									<u-col span="6" style="text-align: right;">
-										<u-button style="background-color: #3C69FC;width: 116rpx;height: 60rpx;color: #FFFFFF;margin-right: 0;"
-										 ripple>接诊</u-button>
-									</u-col>
-								</u-row>
-							</view>
-							<view v-show="orderList[0].length <=0" class="centre">
-								<u-empty mode="list"></u-empty>
-							</view>
-							<u-loadmore v-show="orderList[1].length >0" :status="loadStatus[0]" bgColor="#f2f2f2"></u-loadmore>
+						<view class="list_item" v-for="(res, index) in orderList[0]" :key="res.id">
+							<u-row gutter="0" class="list_item_title">
+								<u-col span="6">
+									<view>顾客信息</view>
+									<text>张三（豆豆）</text>
+								</u-col>
+								<u-col span="6" style="text-align: right;color: #00AEA5;font-size: 28rpx;">待接诊</u-col>
+							</u-row>
+							<u-row gutter="0" style="margin-top: 24rpx;" class="list_item_title">
+								<u-col span="6">
+									<view>挂号时间</view>
+									<text>2020-03-24 15:00</text>
+								</u-col>
+								<u-col span="6" style="text-align: right;">
+									<u-button style="background-color: #3C69FC;width: 116rpx;height: 60rpx;color: #FFFFFF;margin-right: 0;" ripple>接诊</u-button>
+								</u-col>
+							</u-row>
 						</view>
+						<u-empty v-show="orderList[0].length <=0" mode="list"></u-empty>
+						<u-loadmore v-show="orderList[1].length >0" :status="loadStatus[0]" bgColor="#f2f2f2"></u-loadmore>
 					</scroll-view>
 				</swiper-item>
 				<swiper-item class="swiper-item">
 					<scroll-view scroll-y style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
-						<view class="">
-							<view class="list_item" v-for="(res, index) in orderList[1]" :key="res.id">
-								<u-row gutter="0" class="list_item_title">
-									<u-col span="6">
-										<view>顾客信息</view>
-										<text>张三（豆豆）</text>
-									</u-col>
-									<u-col span="6" style="text-align: right;color: #00AEA5;font-size: 28rpx;">待接诊</u-col>
-								</u-row>
-								<u-row gutter="0" style="margin-top: 24rpx;" class="list_item_title">
-									<u-col span="6">
-										<view>挂号时间</view>
-										<text>2020-03-24 15:00</text>
-									</u-col>
-									<u-col span="6">
-										<view>预约时间</view>
-										<text>2020-03-24 15:00</text>
-									</u-col>
-								</u-row>
-							</view>
-							<view v-show="orderList[1].length <=0" class="centre">
-								<u-empty mode="list"></u-empty>
-							</view>
-							<u-loadmore v-show="orderList[1].length >0" :status="loadStatus[1]" bgColor="#f2f2f2"></u-loadmore>
+						<view class="list_item" v-for="(res, index) in orderList[1]" :key="res.id">
+							<u-row gutter="0" class="list_item_title">
+								<u-col span="6">
+									<view>顾客信息</view>
+									<text>张三（豆豆）</text>
+								</u-col>
+								<u-col span="6" style="text-align: right;color: #00AEA5;font-size: 28rpx;">待接诊</u-col>
+							</u-row>
+							<u-row gutter="0" style="margin-top: 24rpx;" class="list_item_title">
+								<u-col span="6">
+									<view>挂号时间</view>
+									<text>2020-03-24 15:00</text>
+								</u-col>
+								<u-col span="6">
+									<view>预约时间</view>
+									<text>2020-03-24 15:00</text>
+								</u-col>
+							</u-row>
 						</view>
+						<u-empty v-show="orderList[1].length <=0" mode="list"></u-empty>
+						<u-loadmore v-show="orderList[1].length >0" :status="loadStatus[1]" bgColor="#f2f2f2"></u-loadmore>
 					</scroll-view>
 				</swiper-item>
 				<swiper-item class="swiper-item">
 					<scroll-view scroll-y :enable-back-to-top="true" style="height: 100%;width: 100%;" @scrolltolower="reachBottom">
-						<view>
-							<view class="list_item" v-for="(res, index) in orderList[2]" :key="res.id">
-								<u-row gutter="0" class="list_item_title">
-									<u-col span="6">
-										<view>顾客信息</view>
-										<text>张三（豆豆）</text>
-									</u-col>
-									<u-col span="6" style="text-align: right;color: #707988;font-size: 28rpx;">已接诊</u-col>
-								</u-row>
-								<u-row gutter="0" style="margin-top: 24rpx;" class="list_item_title">
-									<u-col span="6">
-										<view>挂号时间</view>
-										<text>2020-03-24 15:00</text>
-									</u-col>
-									<u-col span="6">
-										<view>预约时间</view>
-										<text>2020-03-24 15:00</text>
-									</u-col>
-								</u-row>
-							</view>
-							<view v-show="orderList[2].length <=0" class="centre">
-								<u-empty text="暂无历史记录" mode="history"></u-empty>
-							</view>
-							<u-loadmore v-show="orderList[2].length >0" :status="loadStatus[2]" bgColor="#f2f2f2"></u-loadmore>
+						<view class="list_item" v-for="(res, index) in orderList[2]" :key="res.id">
+							<u-row gutter="0" class="list_item_title">
+								<u-col span="6">
+									<view>顾客信息</view>
+									<text>张三（豆豆）</text>
+								</u-col>
+								<u-col span="6" style="text-align: right;color: #707988;font-size: 28rpx;">已接诊</u-col>
+							</u-row>
+							<u-row gutter="0" style="margin-top: 24rpx;" class="list_item_title">
+								<u-col span="6">
+									<view>挂号时间</view>
+									<text>2020-03-24 15:00</text>
+								</u-col>
+								<u-col span="6">
+									<view>预约时间</view>
+									<text>2020-03-24 15:00</text>
+								</u-col>
+							</u-row>
 						</view>
+						<u-empty v-show="orderList[2].length <=0" text="暂无历史记录" mode="history"></u-empty>
+						<u-loadmore v-show="orderList[2].length >0" :status="loadStatus[2]" bgColor="#f2f2f2"></u-loadmore>
 					</scroll-view>
 				</swiper-item>
 			</swiper>
@@ -121,7 +108,6 @@
 		data() {
 			return {
 				orderList: [
-					[],
 					[],
 					[],
 					[]
@@ -355,36 +341,6 @@
 			border-radius: 0 !important;
 			border-bottom: 4rpx solid #00AEA5 !important;
 			transition: all 0.15s ease 0s !important;
-		}
-	}
-
-	.centre {
-		text-align: center;
-		margin: auto;
-		padding: 200rpx 0;
-		font-size: 32rpx;
-
-		image {
-			width: 164rpx;
-			height: 164rpx;
-			border-radius: 50%;
-			margin-bottom: 20rpx;
-		}
-
-		.tips {
-			font-size: 24rpx;
-			color: #999999;
-			margin-top: 20rpx;
-		}
-
-		.btn {
-			margin: 80rpx auto;
-			width: 200rpx;
-			border-radius: 32rpx;
-			line-height: 64rpx;
-			color: #ffffff;
-			font-size: 26rpx;
-			background: linear-gradient(270deg, rgba(249, 116, 90, 1) 0%, rgba(255, 158, 1, 1) 100%);
 		}
 	}
 

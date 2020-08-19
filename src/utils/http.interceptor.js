@@ -6,16 +6,18 @@ const install = (Vue, vm) => {
 		// 如果将此值设置为true，拦截回调中将会返回服务端返回的所有数据response，而不是response.data
 		// 设置为true后，就需要在this.$u.http.interceptor.response进行多一次的判断，请打印查看具体值
 		originalData: true,
+		loadingText: '努力加载中~',
+		loadingTime: 1500,
 		// 设置自定义头部content-type
 		header: {
-			'Authorization': vm.token,
-			'X-TENANT-ID': 'cuncun:cc@2020',
+			'Authorization': vm.vuex_token,
+			'X-TENANT-ID': 'jiawen:pethos@2020',
 			'Content-Type': 'application/x-www-form-urlencoded',
 		}
 	});
 	// 请求拦截，配置Token等参数
 	Vue.prototype.$u.http.interceptor.request = (config) => {
-		config.header.Authorization = vm.token;
+		config.header.Authorization = vm.vuex_token;
 
 		// 方式一，存放在vuex的token，假设使用了uView封装的vuex方式，见：https://uviewui.com/components/globalVariable.html
 		// config.header.token = vm.token;
@@ -37,21 +39,24 @@ const install = (Vue, vm) => {
 		// 判断可能变成了res.statueCode，或者res.data.code之类的，请打印查看结果
 		if (res.statusCode == 200) {
 			// 如果把originalData设置为了true，这里return回什么，this.$u.post的then回调中就会得到什么
-			return res.data;
+			return res.data
+		} else if (res.statusCode == 400) {
+			vm.$u.toast(res.data.message)
+			return false
 		} else if (res.statusCode == 401) {
-			vm.$u.toast('登录过期，请重新登录');
+			vm.$u.toast('登录过期，请重新登录')
 			setTimeout(() => {
 				// 此为uView的方法，详见路由相关文档
 				vm.$u.route('/pages/login/login')
 			}, 1500)
-			return false;
+			return false
 		} else if (res.statusCode == 404) {
 			vm.$u.toast('暂无接口');
-			return false;
+			return false
 		} else if (res.statusCode == 502) {
 			vm.$u.toast('服务器开小差了,请稍后再试');
-			return false;
-		} else return false;
+			return false
+		} else return false
 	}
 }
 
