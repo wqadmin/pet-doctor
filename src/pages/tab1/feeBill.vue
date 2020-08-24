@@ -15,34 +15,10 @@
 					<u-td style="color: #707988;">周六</u-td>
 					<u-td style="color: #707988;">周日</u-td>
 				</u-tr>
-				<u-tr class="c_table_body" v-for="item in tableList" :key="item.id">
+				<u-tr class="c_table_body" v-for="item in list" :key="item.id">
 					<u-td width="25%">{{item.title}}<br />{{item.time}}</u-td>
-					<u-td>
-						<u-icon v-show="item.Mon.isTrue" :label="item.Mon.isToday?'今日':''" label-pos="bottom" label-color="#00AEA5"
-						 label-size="22" name="checkbox-mark" color="#00AEA5" size="40"></u-icon>
-					</u-td>
-					<u-td>
-						<u-icon v-show="item.Tue.isTrue" :label="item.Tue.isToday?'今日':''" label-pos="bottom" label-color="#00AEA5"
-						 label-size="22" name="checkbox-mark" color="#00AEA5" size="40"></u-icon>
-					</u-td>
-					<u-td>
-						<u-icon v-show="item.Wed.isTrue" :label="item.Wed.isToday?'今日':''" label-pos="bottom" label-color="#00AEA5"
-						 label-size="22" name="checkbox-mark" color="#00AEA5" size="40"></u-icon>
-					</u-td>
-					<u-td>
-						<u-icon v-show="item.Thu.isTrue" :label="item.Thu.isToday?'今日':''" label-pos="bottom" label-color="#00AEA5"
-						 label-size="22" name="checkbox-mark" color="#00AEA5" size="40"></u-icon>
-					</u-td>
-					<u-td>
-						<u-icon v-show="item.Fri.isTrue" :label="item.Fri.isToday?'今日':''" label-pos="bottom" label-color="#00AEA5"
-						 label-size="22" name="checkbox-mark" color="#00AEA5" size="40"></u-icon>
-					</u-td>
-					<u-td>
-						<u-icon v-show="item.Sat.isTrue" :label="item.Sat.isToday?'今日':''" label-pos="bottom" label-color="#00AEA5"
-						 label-size="22" name="checkbox-mark" color="#00AEA5" size="40"></u-icon>
-					</u-td>
-					<u-td>
-						<u-icon v-show="item.Sun.isTrue" :label="item.Sun.isToday?'今日':''" label-pos="bottom" label-color="#00AEA5"
+					<u-td v-for="(weekDay, index) in item.week" :key="index">
+						<u-icon v-show="weekDay.isTrue" :label="weekDay.isToday?'今日':''" label-pos="bottom" label-color="#00AEA5"
 						 label-size="22" name="checkbox-mark" color="#00AEA5" size="40"></u-icon>
 					</u-td>
 				</u-tr>
@@ -115,151 +91,127 @@
 	export default {
 		data() {
 			return {
-				tableList: [{
+				list: [{
 					id: '0',
 					title: '早班',
 					time: '8:00~14:00',
-					Mon: {
+					week: [{
 						isTrue: true,
 						isToday: false
-					},
-					Tue: {
+					}, {
 						isTrue: true,
 						isToday: true
-					},
-					Wed: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
-					Thu: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
-					Fri: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
-					Sat: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
-					Sun: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
+					}]
 				}, {
 					id: '1',
 					title: '中班',
 					time: '8:00~14:00',
-					Mon: {
+					week: [{
 						isTrue: false,
 						isToday: false
-					},
-					Tue: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
-					Wed: {
+					}, {
 						isTrue: true,
 						isToday: false
-					},
-					Thu: {
+					}, {
 						isTrue: true,
 						isToday: false
-					},
-					Fri: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
-					Sat: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
-					Sun: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
+					}]
 				}, {
 					id: '2',
 					title: '晚班',
 					time: '8:00~14:00',
-					Mon: {
+					week: [{
 						isTrue: false,
 						isToday: false
-					},
-					Tue: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
-					Wed: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
-					Thu: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
-					Fri: {
+					}, {
 						isTrue: true,
 						isToday: false
-					},
-					Sat: {
-						isTrue: true,
-						isToday: false
-					},
-					Sun: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
+					}, {
+						isTrue: false,
+						isToday: false
+					}]
 				}, {
 					id: '3',
 					title: '夜班',
 					time: '8:00~14:00',
-					Mon: {
+					week: [{
 						isTrue: false,
 						isToday: false
-					},
-					Tue: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
-					Wed: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
-					Thu: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
-					Fri: {
+					}, {
 						isTrue: false,
 						isToday: false
-					},
-					Sat: {
-						isTrue: false,
-						isToday: false
-					},
-					Sun: {
+					}, {
 						isTrue: true,
 						isToday: false
-					},
+					}, {
+						isTrue: true,
+						isToday: false
+					}]
 				}],
 				value: '2019年6月',
 				show: false,
 
-				list: [{
-						value: 0,
-						label: '2019年7月'
-					},
-					{
-						value: 1,
-						label: '2019年6月'
-					},
-					{
-						value: 2,
-						label: '2019年5月'
-					}
-				],
+				// list: [{
+				// 		value: 0,
+				// 		label: '2019年7月'
+				// 	},
+				// 	{
+				// 		value: 1,
+				// 		label: '2019年6月'
+				// 	},
+				// 	{
+				// 		value: 2,
+				// 		label: '2019年5月'
+				// 	}
+				// ],
 				defaultValue: [1],
 				percent: 20 / 30 * 100
 			}
@@ -338,6 +290,7 @@
 
 			.u-td {
 				font-size: 26rpx !important;
+				padding: 0 !important;
 				color: rgba(112, 121, 136, 1);
 			}
 		}
