@@ -13,6 +13,13 @@ Vue.use(uView)
 import moment from 'moment'
 moment.locale('zh-CN')
 Vue.prototype.$moment = moment
+// 移动端调试
+import Vconsole from 'vconsole'
+let vConsole = new Vconsole()
+Vue.use(vConsole)
+// 复制粘贴
+import VueClipboard from 'vue-clipboard2'
+Vue.use(VueClipboard)
 
 // 此处为演示vuex使用，非uView的功能部分
 import store from '@/store'

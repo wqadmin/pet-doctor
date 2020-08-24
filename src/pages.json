@@ -127,13 +127,6 @@
 			}
 		},
 		{
-			"path": "pages/tab1/feeBillDetail",
-			"style": {
-				"navigationBarTitleText": "账单详情",
-				"navigationBarBackgroundColor": "#ffffff"
-			}
-		},
-		{
 			"path": "pages/tab1/appointment",
 			"style": {
 				"navigationBarTitleText": "在线预约",

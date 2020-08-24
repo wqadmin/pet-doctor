@@ -10391,10 +10391,10 @@ uuid@^3.3.2, uuid@^3.4.0:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
-uview-ui@1.6.2:
-  version "1.6.2"
-  resolved "https://registry.npm.taobao.org/uview-ui/download/uview-ui-1.6.2.tgz#02f44a99a4437e5639ba2b75844973671bac3fba"
-  integrity sha1-AvRKmaRDflY5uit1hElzZxusP7o=
+uview-ui@^1.6.4:
+  version "1.6.4"
+  resolved "https://registry.npm.taobao.org/uview-ui/download/uview-ui-1.6.4.tgz#f434445873dbe6aa44b2f292b68255b065d2ca91"
+  integrity sha1-9DREWHPb5qpEsvKStoJVsGXSypE=
 
 v8-to-istanbul@^4.1.3:
   version "4.1.4"

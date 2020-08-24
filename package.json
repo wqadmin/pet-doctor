@@ -59,7 +59,7 @@
     "regenerator-runtime": "^0.12.1",
     "sass": "^1.26.10",
     "sass-loader": "8.0.2",
-    "uview-ui": "1.6.2",
+    "uview-ui": "^1.6.4",
     "vconsole": "^3.3.4",
     "vue": "^2.6.11",
     "vue-clipboard2": "^0.3.1",

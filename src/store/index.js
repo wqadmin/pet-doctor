@@ -10,7 +10,7 @@ try {
 } catch (e) {}
 
 // 需要永久存储，且下次APP启动需要取出的，在state中的变量名
-let saveStateKeys = ['vuex_user', 'vuex_token'];
+let saveStateKeys = ['vuex_user'];
 
 // 保存变量到本地存储中
 const saveLifeData = function(key, value) {
@@ -32,7 +32,7 @@ const store = new Vuex.Store({
 		vuex_user: lifeData.vuex_user ? lifeData.vuex_user : {
 			name: '明月'
 		},
-		vuex_token: lifeData.vuex_token ? lifeData.vuex_token : 'Bearer eyJhbGciOiJSUzI1NiJ9.eyJhY2NvdW50X2lkIjoiNWYzYjQ0ZGRlZjY3NjMyNzJlYjM1ZWYzIiwibG9naW5fdHlwZSI6IndlY2hhdCIsImxvZ2luX3Byb2ZpbGUiOnsid2VjaGF0Ijoib1VHeGh2eE5JNHA2VTkydUJ0OXpJa3VtMTkxTSJ9LCJyb290X2ZsYWciOmZhbHNlLCJsb2dpbl9hY2NvdW50Ijoib1VHeGh2eE5JNHA2VTkydUJ0OXpJa3VtMTkxTSIsImV4cCI6MTU5ODAwNjMwN30.YOU6kFNGbbwNyTVHnJNRq6tbMj_1XMB8ZR6lGplfw-_Q1--tM1Thul5MkzGcAXHhG9fOUfANnehC3aJoumyBTSQaQO24rnNj8jIDfVFJ_HpsU1OvqeIo2pl0EggCc4bQ_0YzC-VvrLSUCVnLU8mEmwL6jKddVbRAPEDkhwuhAAHsZlK8qhsRHomCAdsH86Dt_jkC7Kr7zr3ZDDEKt02npX0IbtjRX0bTNWBbTcSRvmFlB0yYoY7ilz5cGRhfqVMvjFZDh0CAiLP-qFAqkYQpaNz9sISrODF-xO2_pcIB6Jb1N1HFa0NH7TxPiFsi2nBtdLEvYq2YZarCGfCI_kNNcA',
+		vuex_token: lifeData.vuex_token ? lifeData.vuex_token : 'Bearer eyJhbGciOiJSUzI1NiJ9.eyJhY2NvdW50X2lkIjoiNWYzZGQ1ZTYzMmQwOTcwZWMzZWI5NzQ3IiwibG9naW5fdHlwZSI6Im1vYmlsZSIsImxvZ2luX3Byb2ZpbGUiOnsidHlwZSI6ImVtcGxveWVlIiwid2VjaGF0Ijoib1VHeGh2N3F0MVVQWDJYc3ZocUFkQ1hDN2YzNCJ9LCJyb290X2ZsYWciOmZhbHNlLCJsb2dpbl9hY2NvdW50IjoiMTg3OTAyMjE1OTEiLCJleHAiOjE1OTg0OTI5NTd9.b3QlfomrJpYUiCRm7Hn-_AU09e4zaQRIEOaJ6aylqdaCHHPTLpc0eKJjN6fKJ-5V7co47jlQjXDLeHaRBO2KoUrEqYjpLWAHS8e7t8tVNnKxucnO9oFBWjgljPYgqwmQi-5acMGAmpllZaHLr0JknV87yat5X7xAkFDeyu88u8qJK01uIlzRGl02KVLocAC3tpIA5pAEbIbx-jGxT-CVoSTF3xHmfB2fQGIblVBhC3y6KF5PWfB0ZAQTBs1k5FERyRn3knHWb0_q7qA1bQ8SaMM5_3bj49BnHAUATr7HmyitsS1hpr2JsFUlLS_b0UBZSW6ntAL8kJdwNS4EDtgyZg',
 		// 如果vuex_version无需保存到本地永久存储，无需lifeData.vuex_version方式
 		wxAppID: 'wx8d022398061e88cb',
 		wxCode: '',
