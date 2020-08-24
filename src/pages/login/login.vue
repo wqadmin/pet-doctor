@@ -30,7 +30,7 @@
 						<u-input v-model="code" type="number" maxlength="6" :border="false" placeholder="请输入您的短信验证码" />
 					</u-col>
 					<u-col span="4" style="padding: 0;text-align: right;">
-						<u-button size="mini" type="primary" :disabled="disabled" ripple @click="getCode">{{codeText}}</u-button>
+						<u-button size="mini" type="primary" :disabled="disabled" ripple @click="getSms">{{codeText}}</u-button>
 						<u-verification-code ref="uCode" :seconds="30" @change="codeChange"></u-verification-code>
 					</u-col>
 				</u-row>
@@ -45,6 +45,7 @@
 			<u-image width="100%" height="500rpx" src="/static/tab1/login_bg.png"></u-image>
 		</view>
 		<u-toast ref="uToast" />
+		<u-modal v-model="showModal" :content="content" confirm-color="#00AEA5"></u-modal>
 	</view>
 </template>
 
@@ -52,64 +53,113 @@
 	export default {
 		data() {
 			return {
-				mobile: '123123123123',
-				code: '132123',
+				mobile: '',
+				code: '',
 				codeText: '',
-				disabled: false
+				disabled: false,
+				showModal: false,
+				content: ''
 			}
 		},
-		onLoad() {},
-		onShow() {},
+		onLoad(option) {
+			console.log(option.code)
+		},
+		onShow() {
+			console.log(this.getUrlCode('code'))
+		},
 		onPullDownRefresh() {},
 		onPageScroll(options) {
 			if (options.scrollTop > 60) {} else {}
 		},
-		onTabItemTap(e) {},
 		methods: {
-			vuexChange(index) {
-				this.$u.vuex('vuex_demo', index);
-			},
 			codeChange(text) {
 				this.codeText = text
 				if (text == '重新获取') {
 					this.disabled = false
 				}
 			},
-			getCode() {
-				if (this.$refs.uCode.canGetCode) {
-					uni.showLoading({
-						title: '正在获取验证码'
+			getSms() {
+				if (!this.$u.test.mobile(this.mobile)) {
+					this.$refs.uToast.show({
+						title: '请输入正确的手机号码',
+						type: 'warning',
 					})
-					this.disabled = true
-					setTimeout(() => {
-						uni.hideLoading();
-						this.$refs.uCode.start()
-					}, 1000)
 				} else {
-					this.disabled = true
-					this.$u.toast('倒计时结束后再发送')
+					if (this.$refs.uCode.canGetCode) {
+						this.$u.api.code({
+							account: this.mobile,
+							type: 'mobile'
+						}).then(res => {
+							if (res.success) {
+								this.disabled = true
+								this.$refs.uCode.start()
+								this.$refs.uToast.show({
+									title: '发送成功',
+									type: 'success',
+									duration: 500
+								})
+							} else {
+								this.$refs.uToast.show({
+									title: '请稍后再试...',
+									type: 'warning'
+								})
+							}
+						})
+					} else {
+						this.disabled = true
+						this.$u.toast('倒计时结束后再发送')
+					}
 				}
 			},
 			onLogin() {
-				console.log("logindoctor")
-				if (!this.mobile) {
+				if (!this.$u.test.mobile(this.mobile)) {
 					this.$refs.uToast.show({
-						title: '请输入您的手机号码',
+						title: '请输入正确的手机号码',
 						type: 'warning',
 					})
 				} else if (!this.code) {
 					this.$refs.uToast.show({
 						title: '请输入您的短信验证码',
-						type: 'warning',
+						type: 'warning'
 					})
 				} else {
-					this.$refs.uToast.show({
-						title: '登录成功',
-						type: 'success',
-						duration: 500,
-						url: '/pages/tabs/tab1'
+					this.$u.api.checkMobile({
+						mobile: this.mobile
+					}).then(res => {
+						if (res.success) {
+							this.$u.api.bindLogin({
+								wxCode: this.getUrlCode('code'),
+								wxCodeType: 'wx_h5',
+								type: 'mobile',
+								account: this.mobile,
+								code: this.code
+							}).then(res => {
+								if (res.success) {
+									this.$u.vuex('vuex_token', `Bearer ${res.data.token}`)
+									console.log(this.vuex_token)
+									this.$refs.uToast.show({
+										title: '登录成功',
+										type: 'success',
+										duration: 500,
+										url: '/pages/tabs/tab1'
+									})
+								}
+							}).catch(err => {
+								this.$refs.uToast.show({
+									title: err.data.data,
+									type: 'warning'
+								})
+							})
+						}
+					}).catch(err => {
+						this.showModal  = true
+						this.content = err.data.data
 					})
 				}
+			},
+			getUrlCode(name) {
+				return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ''])[1]
+					.replace(/\+/g, '%20')) || null
 			}
 		}
 	}

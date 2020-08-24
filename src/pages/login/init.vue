@@ -15,17 +15,7 @@
 		onShow() {
 			this.$nextTick(() => {
 				this.getCode()
-				// this.goWxLogin("071Tczll2mLCr54loNnl2UlAd83Tczl8")
 			})
-			console.log(this.wxAppID)
-			// this.$nextTick(()=>{
-			// 	this.$refs.uToast.show({
-			// 		title: '登录成功',
-			// 		type: 'success',
-			// 		duration: 500,
-			// 		url: '/pages/login/login?code=fjdskhjkh4324&state=666'
-			// 	})
-			// })
 		},
 		methods: {
 			getCode() {
@@ -33,7 +23,7 @@
 					let code = this.getUrlCode('code')
 					if (code === null || code === '') {
 						window.location.href =
-							`https://open.weixin.qq.com/connect/oauth2/authorize?appid=${this.wxAppID}&redirect_uri=${encodeURIComponent('http://user-h5.jw.iisu.cn')}&response_type=code&scope=snsapi_userinfo&connect_redirect=1#wechat_redirect`
+							`https://open.weixin.qq.com/connect/oauth2/authorize?appid=${this.wxAppID}&redirect_uri=${encodeURIComponent('http://doctor-h5.jw.iisu.cn')}&response_type=code&scope=snsapi_userinfo&connect_redirect=1#wechat_redirect`
 					} else {
 						this.$nextTick(() => {
 							this.goWxLogin(code)
@@ -50,9 +40,9 @@
 					wxCode: code,
 					wxCodeType: 'wx_h5'
 				}).then(res => {
-					console.log(res)
 					if (res.success) {
 						this.$u.vuex('vuex_token', `Bearer ${res.data.token}`)
+						console.log(this.vuex_token)
 						this.$refs.uToast.show({
 							title: '登录成功',
 							type: 'success',
@@ -68,7 +58,7 @@
 						})
 					} else {
 						window.location.href =
-							`https://open.weixin.qq.com/connect/oauth2/authorize?appid=${this.wxAppID}&redirect_uri=${encodeURIComponent('http://user-h5.jw.iisu.cn/#/pages/login/login')}&response_type=code&scope=snsapi_userinfo&connect_redirect=1#wechat_redirect`
+							`https://open.weixin.qq.com/connect/oauth2/authorize?appid=${this.wxAppID}&redirect_uri=${encodeURIComponent('http://doctor-h5.jw.iisu.cn/#/pages/login/login')}&response_type=code&scope=snsapi_userinfo&connect_redirect=1#wechat_redirect`
 					}
 				})
 			}
